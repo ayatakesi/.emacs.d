@@ -60,7 +60,7 @@
  '(dictionary-server "localhost")
  '(elfeed-feeds
    (quote
-    ("http://planet.gnu.org/rss20.xml" "http://static.fsf.org/fsforg/rss/blogs.xml" "https://static.fsf.org/fsforg/rss/news.xml" "http://sachachua.com/blog/feed/")))
+    ("http://planet.gnu.org/rss20.xml" "http://static.fsf.org/fsforg/rss/blogs.xml" "https://static.fsf.org/fsforg/rss/news.xml")))
  '(package-selected-packages (quote (elfeed link connection dictionary magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
