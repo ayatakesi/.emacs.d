@@ -51,6 +51,18 @@
 
 ; else
 (global-set-key (kbd "C-t") 'other-window)
+(global-set-key (kbd "C-h") 'delete-backward-char)
+(global-set-key (kbd "C-c C-SPC") 'forward-whitespace)
+(global-set-key (kbd "C-c C-f")
+		(quote
+		 (lambda ()
+		   (interactive)
+		   (if
+		       (search-forward
+			(char-to-string
+			 (char-after)) nil nil 2)
+		       (backward-char)))))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -61,7 +73,9 @@
  '(elfeed-feeds
    (quote
     ("http://planet.gnu.org/rss20.xml" "http://static.fsf.org/fsforg/rss/blogs.xml" "https://static.fsf.org/fsforg/rss/news.xml" "http://sachachua.com/blog/feed/")))
- '(package-selected-packages (quote (elfeed link connection dictionary magit))))
+ '(package-selected-packages
+   (quote
+    (pandoc package-utils elfeed link connection dictionary magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
