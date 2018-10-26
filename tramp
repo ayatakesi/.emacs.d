@@ -1,0 +1,8 @@
+;; -*- emacs-lisp -*- <18/09/22 20:27:47 /data/data/com.termux/files/home/.emacs.d/tramp>
+;; Tramp connection history.  Don't change this file.
+;; You can delete it, forcing Tramp to reapply the checks.
+
+(((tramp-file-name "gdrive" nil nil "localhost" nil nil nil)
+  nil)
+ ((tramp-file-name "gdrive" "ayanokoji.takesi" nil "gmail.com" nil nil nil)
+  nil))

@@ -3,6 +3,17 @@
 (add-to-list 'package-archives
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
+(global-hl-line-mode)
+
+;; google-translate
+
+(setq load-path (cons "~/.emacs.d/elpa/google-translate-0.11.15/" load-path))
+
+(require 'google-translate)
+(require 'google-translate-default-ui)
+(global-set-key "\C-ct" 'google-translate-at-point)
+(global-set-key "\C-cT" 'google-translate-query-translate)
+
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -12,11 +23,22 @@
 ;;; gettext
 (setq auto-mode-alist
       (cons '("\\.po\\'\\|\\.po\\." . po-mode) auto-mode-alist))
+(autoload 'po-find-file-coding-system "po-compat")
+(modify-coding-system-alist 'file "\\.po\\'\\|\\.po\\."
+			    'po-find-file-coding-system)
+
 (autoload 'po-mode "po-mode" "Major mode for translators to edit PO files" t)
 
-;(modify-coding-system-alist 'file "\\.po\\'\\|\\.po\\."
-;                            'po-find-file-coding-system)
-;(autoload 'po-find-file-coding-system "po-mode")
+(modify-coding-system-alist 'file "\\.po\\'\\|\\.po\\."
+                            'po-find-file-coding-system)
+
+(add-hook 'po-mode-hook
+  (quote
+   (lambda ()
+     (require 'texinfo)
+     (font-lock-add-keywords
+      'po-mode
+      texinfo-font-lock-keywords))))
 
 ;;; my setting
 (load "~/.emacs.d/my_lisp.el")
@@ -63,11 +85,7 @@
 		(quote
 		 (lambda ()
 		   (interactive)
-		   (if
-		       (search-forward
-			(char-to-string
-			 (char-after)) nil nil 2)
-		       (backward-char)))))
+		   (forward-sexp 2))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -79,9 +97,11 @@
  '(elfeed-feeds
    (quote
     ("http://planet.gnu.org/rss20.xml" "http://static.fsf.org/fsforg/rss/blogs.xml" "https://static.fsf.org/fsforg/rss/news.xml" "http://sachachua.com/blog/feed/")))
+ '(google-translate-default-source-language "en")
+ '(google-translate-default-target-language "ja")
  '(package-selected-packages
    (quote
-    (pdf-tools pandoc package-utils elfeed link connection dictionary magit))))
+    (htmlize google-translate pdf-tools pandoc package-utils elfeed link connection dictionary magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
