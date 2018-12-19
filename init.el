@@ -1,24 +1,63 @@
-
 (require 'package)
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
 (add-to-list 'package-archives
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+
+;; 日本語環境の設定
+(set-language-environment "Japanese")
+(prefer-coding-system 'utf-8)
+(set-default 'buffer-file-coding-system 'utf-8)
+
+;; org
+;; http://www.mhatta.org/wp/2018/08/16/org-mode-101-1/
+(setq org-directory "~/Dropbox/Org")
+(setq org-default-notes-file "notes.org")
+					; Org-captureの設定
+					; Org-captureを呼び出すキーシーケンス
+(define-key global-map "\C-cc" 'org-capture)
+					; Org-captureのテンプレート（メニュー）の設定
+(setq org-capture-templates
+      '(("n" "Note" entry (file+headline "~/Dropbox/Org/notes.org" "Notes") "* %?\nEntered on %U\n %i\n %a")
+	))
+
+
+					; メモをC-M-^一発で見るための設定
+					; https://qiita.com/takaxp/items/0b717ad1d0488b74429d から拝借
+(defun show-org-buffer (file)
+  "Show an org-file FILE on the current buffer."
+  (interactive)
+  (if (get-buffer file)
+      (let ((buffer (get-buffer file)))
+	(switch-to-buffer buffer)
+	(message "%s" file))
+    (find-file (concat "~/ownCloud/Org/" file))))
+(global-set-key (kbd "C-M-^")
+		'(lambda ()
+		   (interactive)
+		   (show-org-buffer "notes.org")))
+
 
 (global-hl-line-mode)
 
 ;; google-translate
 
-(setq load-path (cons "~/.emacs.d/elpa/google-translate-0.11.15/" load-path))
+(setq load-path (cons "~/.emacs.d/elpa/google-translate-0.11.16/" load-path))
 
 (require 'google-translate)
 (require 'google-translate-default-ui)
 (global-set-key "\C-ct" 'google-translate-at-point)
 (global-set-key "\C-cT" 'google-translate-query-translate)
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
+;; https://qiita.com/minoruGH/items/75eb4fab53e93653f999
+;; Fix error of "Failed to search TKK"
+(defun google-translate--get-b-d1 ()
+  ;; TKK='427110.1469889687'
+  (list 427110 1469889687))
+
 
 ;;; gettext
 (setq auto-mode-alist
@@ -87,6 +126,19 @@
 		   (interactive)
 		   (forward-sexp 2))))
 
+(setq magit-repository-directories
+      '(("~/gitroot/ayatakesi.github.io" . 1)
+	("~/gitroot/check-upstream-modifications" . 1)
+	("~/gitroot/emacs-24.5-doc-lispref" . 1)
+	("~/gitroot/emacs-25.1-doc-emacs" . 1)
+	("~/gitroot/emacs-25.2-doc-emacs" . 1)
+	("~/gitroot/emacs-26-doc-lispref" . 1)
+	("~/gitroot/emacs-26.1-doc-emacs" . 1)
+	("~/gitroot/emacs-26.1.90" . 1)
+	("~/gitroot/po4a" . 1)
+	("~/gitroot/termux-packages" . 1)
+	("~/storage/external-1/gitroot/emacs/" . 1)))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -101,7 +153,7 @@
  '(google-translate-default-target-language "ja")
  '(package-selected-packages
    (quote
-    (htmlize google-translate pdf-tools pandoc package-utils elfeed link connection dictionary magit))))
+    (minimap htmlize google-translate pdf-tools pandoc package-utils elfeed link connection dictionary magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
