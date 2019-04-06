@@ -6,7 +6,11 @@
   [url-cookie "NID" "140=KtpqvUZrgMxwwcdk2AUyrfSyIMjt_1TLhJ3mOJyFW2336qwGz-bYDG20eNUAk7yEfoFJIa1D3ownTb_r8wVsFr-C9_kMgOm0R-1WIkDYkfGXeOVb57-yjf5SpgIpPtYH" "Tue, 02-Apr-2019 06:08:58 GMT" "/" ".google.com" nil]))
 )
 (setq url-cookie-secure-storage
- '(("reddit.com"
+ '(("service.wi2.ne.jp"
+  [url-cookie "session_id" "0c3a349d-f560-4600-9323-9bc0b33b8e5e" "Thu Jan 24 07:49:09 2019 GMT" "/" "service.wi2.ne.jp" t]
+  [url-cookie "lang" "ja" "Thu Jan 24 07:48:49 2019 GMT" "/wi2auth/at_STARBUCKS_Wi2/" "service.wi2.ne.jp" t]
+  [url-cookie "type" "xhr" "Thu Jan 24 07:48:49 2019 GMT" "/wi2auth/at_STARBUCKS_Wi2/" "service.wi2.ne.jp" t])
+ ("reddit.com"
   [url-cookie "loid" "00000000000rm4luk4.2.1515691404196.Z0FBQUFBQmFWNTJNSEhuODRBUDEyZmNQMWo3QUVPSFFDT3BYQ1JockJxdHc3T3BtUEplczBfTGZmdDZvakllRE8tempKdS1RSVlzZlpSNmxveTMtVzBQYVF1dE0tdjh6XzVMM0JJeWhPS1JCZ3NOVGpSSzIwRVB6RTdubXhZcF9oaGVPa05wbkRxNEE" "11-Jan-2020 17:23:24.00 GMT" "/" "reddit.com" t]))
 )
 

@@ -12,6 +12,10 @@
 (prefer-coding-system 'utf-8)
 (set-default 'buffer-file-coding-system 'utf-8)
 
+;; skk
+(setq skk-large-jisyo "/data/data/com.termux/files/usr/share/skk/SKK-JISYO.L")
+(add-hook 'text-mode-hook 'toggle-input-method)
+
 ;; org
 ;; http://www.mhatta.org/wp/2018/08/16/org-mode-101-1/
 (setq org-directory "~/Dropbox/Org")
@@ -139,6 +143,14 @@
 	("~/gitroot/termux-packages" . 1)
 	("~/storage/external-1/gitroot/emacs/" . 1)))
 
+;; ddskk
+(when (require 'skk nil t)
+  (global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
+  ;;良い感じに改行を自動入力してくれる機能
+  (setq default-input-method "japanese-skk")
+  ;;emacs上での日本語入力にskkをつかう
+  (require 'skk-study)) 
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -149,11 +161,17 @@
  '(elfeed-feeds
    (quote
     ("http://planet.gnu.org/rss20.xml" "http://static.fsf.org/fsforg/rss/blogs.xml" "https://static.fsf.org/fsforg/rss/news.xml" "http://sachachua.com/blog/feed/")))
+ '(gnus-select-method (quote (nntp "news.gmane.org")))
  '(google-translate-default-source-language "en")
  '(google-translate-default-target-language "ja")
+ '(package-archives
+   (quote
+    (("melpa" . "http://melpa.org/packages/")
+     ("gnu" . "https://elpa.gnu.org/packages/")
+     ("melpa-stable" . "http://stable.melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (minimap htmlize google-translate pdf-tools pandoc package-utils elfeed link connection dictionary magit))))
+    (ddskk minimap htmlize google-translate pdf-tools pandoc package-utils elfeed link connection dictionary magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
