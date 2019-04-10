@@ -192,6 +192,14 @@
   ;;emacs上での日本語入力にskkをつかう
   (require 'skk-study)) 
 
+;; ddskk
+(when (require 'skk nil t)
+  (global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
+  ;;良い感じに改行を自動入力してくれる機能
+  (setq default-input-method "japanese-skk")
+  ;;emacs上での日本語入力にskkをつかう
+  (require 'skk-study)) 
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

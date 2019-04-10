@@ -2,12 +2,12 @@
 ;; Automatically generated file!!! DO NOT EDIT!!!
 
 (setq url-cookie-storage
- 'nil)
+ '((".google.com"
+  [url-cookie "NID" "140=KtpqvUZrgMxwwcdk2AUyrfSyIMjt_1TLhJ3mOJyFW2336qwGz-bYDG20eNUAk7yEfoFJIa1D3ownTb_r8wVsFr-C9_kMgOm0R-1WIkDYkfGXeOVb57-yjf5SpgIpPtYH" "Tue, 02-Apr-2019 06:08:58 GMT" "/" ".google.com" nil]))
+)
 (setq url-cookie-secure-storage
  '(("reddit.com"
-  [url-cookie "loid" "00000000000rm4luk4.2.1515691404196.Z0FBQUFBQmFWNTJNSEhuODRBUDEyZmNQMWo3QUVPSFFDT3BYQ1JockJxdHc3T3BtUEplczBfTGZmdDZvakllRE8tempKdS1RSVlzZlpSNmxveTMtVzBQYVF1dE0tdjh6XzVMM0JJeWhPS1JCZ3NOVGpSSzIwRVB6RTdubXhZcF9oaGVPa05wbkRxNEE" "11-Jan-2020 17:23:24.00 GMT" "/" "reddit.com" t]
-  [url-cookie "Max-Age" "7199" "11-Jan-2018 19:32:06.00 GMT" "/" "reddit.com" t]
-  [url-cookie "session_tracker" "DO0N5USll1mj3Qy3L8.0.1515691926264.Z0FBQUFBQmFWNS1XMXVyNG1PTE5iYkNkbHBVYkNDNDROdE5paURMcmFoTFc4aTMtSWFUaXhZS0FEaWUteXF4Sk9NQWF3SkVGX3I3dTNFc3JtLTNXcHRTNzYzZzVSR1VuMlZSTlJUdzJuLWJEaHlpQkNFbXdmMnUxZUZXeHZyNjZTbk56Q09tMmdmTGQ" "11-Jan-2018 19:32:06.00 GMT" "/" "reddit.com" t]))
+  [url-cookie "loid" "00000000000rm4luk4.2.1515691404196.Z0FBQUFBQmFWNTJNSEhuODRBUDEyZmNQMWo3QUVPSFFDT3BYQ1JockJxdHc3T3BtUEplczBfTGZmdDZvakllRE8tempKdS1RSVlzZlpSNmxveTMtVzBQYVF1dE0tdjh6XzVMM0JJeWhPS1JCZ3NOVGpSSzIwRVB6RTdubXhZcF9oaGVPa05wbkRxNEE" "11-Jan-2020 17:23:24.00 GMT" "/" "reddit.com" t]))
 )
 
 ;; Local Variables:
