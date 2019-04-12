@@ -148,7 +148,7 @@
 (autoload 'dictionary "dictionary"
 	  "Create a new dictionary buffer" t)
 (autoload 'dictionary-mouse-popup-matching-words "dictionary"
-	  "Display entries matching the word at the cursor" t)
+`	  "Display entries matching the word at the cursor" t)
 (autoload 'dictionary-popup-matching-words "dictionary"
 	  "Display entries matching the word at the point" t)
 (autoload 'dictionary-tooltip-mode "dictionary"
@@ -163,26 +163,25 @@
 ; else
 (global-set-key (kbd "C-t") 'other-window)
 (global-set-key (kbd "C-h") 'delete-backward-char)
-(global-set-key (kbd "C-c C-SPC")
-		(quote
-		 (lambda ()
-		   (interactive)
-		   (forward-whitespace 1)
-		   (backward-char))))
 
-(global-set-key (kbd "C-c C-f")
-		(quote
-		 (lambda ()
-		   (interactive)
-		   (forward-sexp 2))))
-
-(global-set-key (kbd "C-c C-z")
-		(quote
-		 (lambda ()
-		   (interactive)
-		   (let ((ans (shell-command-to-string "termux-dialog")))
-		     (string-match "^  \"text\": \"\\(.*\\)\"$" ans)
-		     (insert (match-string 1 ans))))))
+(let ((my-next-whitespace-minus1 (lambda ()
+				   (interactive)
+				   (forward-whitespace 1)
+				   (backward-char)))
+      
+      (my-forward-sexp2 (lambda ()
+			  (interactive)
+			  (forward-sexp 2)))
+      
+      (my-termux-dialog (lambda ()
+			  (interactive)
+			  (let ((ans (shell-command-to-string "termux-dialog")))
+			    (string-match "^  \"text\": \"\\(.*\\)\"$" ans)
+			    (insert (match-string 1 ans))))))
+  
+  (global-set-key (kbd "C-c C-SPC") my-next-whitespace-minus1)
+  (global-set-key (kbd "C-c C-f") my-forward-sexp2)
+  (global-set-key (kbd "C-c C-z") my-termux-dialog))
 
 ;; ddskk
 (when (require 'skk nil t)
