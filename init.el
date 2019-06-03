@@ -130,7 +130,8 @@
       texinfo-font-lock-keywords))))
 
 ;;; my setting
-(load "~/.emacs.d/my_lisp.el")
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(load "my_lisp.el")
 
 ; eldoc
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
@@ -171,7 +172,15 @@
       
       (my-forward-sexp2 (lambda ()
 			  (interactive)
-			  (forward-sexp 2)))
+			  (let ((curr (point)))
+			    (search-forward "@")
+			    (backward-char 1)
+			    (set-mark (point))
+			    (forward-sexp 2)
+			    (kill-region
+			     (region-beginning)
+			     (region-end))
+			    (goto-char curr))))
       
       (my-termux-dialog (lambda ()
 			  (interactive)
