@@ -2,11 +2,21 @@
 ;; Automatically generated file!!! DO NOT EDIT!!!
 
 (setq url-cookie-storage
- '((".google.com"
-  [url-cookie "NID" "140=KtpqvUZrgMxwwcdk2AUyrfSyIMjt_1TLhJ3mOJyFW2336qwGz-bYDG20eNUAk7yEfoFJIa1D3ownTb_r8wVsFr-C9_kMgOm0R-1WIkDYkfGXeOVb57-yjf5SpgIpPtYH" "Tue, 02-Apr-2019 06:08:58 GMT" "/" ".google.com" nil]))
+ '(("techopedia.com"
+  [url-cookie "ezCMPCCS" "true" "Sat, 03 Oct 2020 02:37:36 GMT" "/" "techopedia.com" nil])
+ (".github.com"
+  [url-cookie "_octo" "GH1.1.1090963519.1569895842" "Fri, 01 Oct 2021 02:10:42 -0000" "/" ".github.com" nil])
+ (".qiita.com"
+  [url-cookie "_qiita_login_session" "RU5ncjRycXNLaUh6M3gzRXZKS2wybkcyTkNpRVBJZFd4UjRZYTRIbWU5TGc5NWRncjVDQWtMOWZjdVZyY01Ycm5ZZE1DalBqUVFNVmQwMVRGZTIvOVdKVkVaNEgwYXMzZHVxMTNGTE10U0p4eTNMRkJTV1VwUXp2Vk5jYWpUZTlIVERsdEJTS0g5bmNjZEVHZnhqTzdwUlRSUGFMTW5HRlU0T2pDZ0ZOaXVpVkhMZkZzUy96TERJL3RjY2ptRGh2LS0zWWJZVi9SdWkrY0VQaFVSaTQ1ZXhnPT0%3D--5b1b2c24a2c592b30b787957dfb2b4cc8157c2c6" "Tue, 20 Oct 2020 22:06:52 -0000" "/" ".qiita.com" nil])
+ (".google.com"
+  [url-cookie "NID" "188=lE5F4wQ3jLw0cqK6cEBrHPrM4JuOS6JbaQdLvET8HIgTuJo7xLJG6jI842hesAUl5f9nQ5V2qrVUOAgnSaVYAc7TSK9p3lFV0rXMEN1BL3yL9avR21x4r6eST9C3Zbr5wCTGQE5zoPcRhHvNzvOHGM5PgkPz8pEiSkPwMyUbNR4" "Sun, 22-Mar-2020 09:35:13 GMT" "/" ".google.com" nil]))
 )
 (setq url-cookie-secure-storage
- '(("reddit.com"
+ '((".github.com"
+  [url-cookie "logged_in" "no" "Sat, 01 Oct 2039 02:10:43 -0000" "/" ".github.com" t])
+ (".techopedia.com"
+  [url-cookie "__cfduid" "d8638caf2c6f52cb637fc31c1ceaa8e771570070255" "Fri, 02-Oct-20 02:37:35 GMT" "/" ".techopedia.com" t])
+ ("reddit.com"
   [url-cookie "loid" "00000000000rm4luk4.2.1515691404196.Z0FBQUFBQmFWNTJNSEhuODRBUDEyZmNQMWo3QUVPSFFDT3BYQ1JockJxdHc3T3BtUEplczBfTGZmdDZvakllRE8tempKdS1RSVlzZlpSNmxveTMtVzBQYVF1dE0tdjh6XzVMM0JJeWhPS1JCZ3NOVGpSSzIwRVB6RTdubXhZcF9oaGVPa05wbkRxNEE" "11-Jan-2020 17:23:24.00 GMT" "/" "reddit.com" t]))
 )
 
