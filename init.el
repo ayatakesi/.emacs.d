@@ -13,6 +13,9 @@
 (prefer-coding-system 'utf-8)
 (set-default 'buffer-file-coding-system 'utf-8)
 
+;; delete-selection-mode
+(delete-selection-mode)
+
 ;; Show/hide Emacs dired details in style
 ;; http://xenodium.com/showhide-emacs-dired-details-in-style/
 (use-package dired
@@ -28,6 +31,9 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
+
+;; anzu
+(global-anzu-mode +1)
 
 ;; eldoc-box
 (require 'eldoc-box)
@@ -98,7 +104,17 @@
 
 ;;; toggle IM at edit
 (advice-add #'po-edit-msgstr :after
-	    #'(lambda () (toggle-input-method)))
+	    #'(lambda ()
+		(toggle-input-method)
+		(font-lock-add-keywords
+		 nil
+		 texinfo-font-lock-keywords)))
+
+;;; recenter when po-next-entry
+(advice-add #'po-next-entry :after
+	    #'(lambda ()
+		"recenter"
+		(recenter nil)))
 
 ;;; my setting
 (add-to-list 'load-path "~/.emacs.d/lisp")
@@ -152,6 +168,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(Info-default-directory-list (quote ("/data/data/com.termux/files/usr/share/info/")))
  '(browse-url-browser-function (quote eww-browse-url))
  '(compilation-scroll-output t)
  '(dictionary-server "localhost")
@@ -169,7 +186,7 @@
      ("melpa-stable" . "http://stable.melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (auto-complete diredfl use-package elpa-clone ivy-posframe eldoc-box crux neotree ag elisp-demos helpful ddskk minimap htmlize google-translate pdf-tools pandoc package-utils elfeed link connection magit)))
+    (anzu auto-complete diredfl use-package elpa-clone ivy-posframe eldoc-box crux neotree ag elisp-demos helpful ddskk minimap htmlize google-translate pdf-tools pandoc package-utils elfeed link connection magit)))
  '(po-default-file-header
    "# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Free Software Foundation, Inc.

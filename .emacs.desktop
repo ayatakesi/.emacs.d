@@ -1,0 +1,79 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Mon Oct 28 17:24:16 2019
+;; Desktop file format version 208
+;; Emacs version 26.3
+
+;; Global section:
+(setq desktop-saved-frameset [frameset 1 (23990 42416 91813 646000) (desktop . "208") "u0_a150@localhost" nil nil ((((minibuffer . t) (tty-type . "xterm-256color") (tty . "/dev/tty") (display-type . color) (background-mode . dark) (foreground-color . "unspecified-fg") (background-color . "unspecified-bg") (font . "tty") (height . 42) (width . 63) (modeline . t) (unsplittable) (menu-bar-lines . 1) (frameset--id . "0072-3832-6DF6-6063") (frameset--mini t)) ((min-height . 8) (min-width . 10) (min-height-ignore . 5) (min-width-ignore . 2) (min-height-safe . 2) (min-width-safe . 2) (min-pixel-height . 8) (min-pixel-width . 10) (min-pixel-height-ignore . 5) (min-pixel-width-ignore . 2) (min-pixel-height-safe . 2) (min-pixel-width-safe . 2)) vc (pixel-width . 63) (pixel-height . 40) (total-width . 63) (total-height . 40) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (leaf (pixel-width . 63) (pixel-height . 21) (total-width . 63) (total-height . 21) (normal-height . 0.5) (normal-width . 1.0) (buffer "edebug.texi.po" (selected) (hscroll . 0) (fringes 0 0 nil) (margins nil) (scroll-bars nil 0 t nil 0 nil) (vscroll . 0) (dedicated) (point . 58308) (start . 58134))) (leaf (last . t) (pixel-width . 63) (pixel-height . 19) (total-width . 63) (total-height . 19) (normal-height . 0.5) (normal-width . 1.0) (buffer "*Buffer List*" (selected . t) (hscroll . 0) (fringes 0 0 nil) (margins nil) (scroll-bars nil 0 t nil 0 nil) (vscroll . 0) (dedicated) (point . 731) (start . 1)))))])
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring '("’Ìµ’¸Â" "hooks for loading" "customize" "customize.te" "anzu" "help-echo" "anac" "ac-skk" "ac-ja"))
+(setq regexp-search-ring nil)
+(setq register-alist nil)
+(setq file-name-history '("." "~/.bashrc" "~/gitroot/emacs-25.1-doc-lispref/replace.sh" "~/gitroot/emacs-25.1-doc-lispref/edebug.texi.po" "~/gitroot/emacs-25.1-doc-lispref/debugging.texi.po" "~/gitroot/emacs-25.1-doc-lispref/compile.texi.po" "~/gitroot/emacs-25.1-doc-lispref/elisp.texi.po" "~/gitroot/emacs-25.1-doc-lispref/replace.sh" "~/gitroot/emacs-25.1-doc-lispref/loading.texi.po" "~/gitroot/emacs-25.1-doc-lispref/original_texis/elisp.texi" "~/gitroot/emacs-25.1-doc-lispref/customize.texi.po" "~/.emacs.d/init.el" "~/gitroot/emacs-25.1-doc-lispref/customize.texi.po"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 208
+  "/data/data/com.termux/files/home/gitroot/emacs-25.1-doc-lispref/edebug.texi.po"
+  "edebug.texi.po"
+  'po-mode
+  '(context-skk-mode anzu-mode)
+  58308
+  '(11328 nil)
+  t
+  nil
+  '((buffer-display-time 23990 42394 629675 629000) (buffer-file-coding-system . utf-8-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/data/data/com.termux/files/home/gitroot/emacs-25.1-doc-lispref/replace.sh"
+  "replace.sh"
+  'sh-mode
+  '(auto-complete-mode context-skk-mode anzu-mode)
+  22711
+  '(22705 nil)
+  nil
+  nil
+  '((buffer-display-time 23990 40242 496563 978000) (buffer-file-coding-system . utf-8-unix))
+  '((mark-ring (1))))
+
+(desktop-create-buffer 208
+  "/data/data/com.termux/files/home/gitroot/emacs-25.1-doc-lispref/debugging.texi.po"
+  "debugging.texi.po"
+  'po-mode
+  '(context-skk-mode anzu-mode)
+  57767
+  '(57756 nil)
+  t
+  nil
+  '((buffer-display-time 23989 57819 877269 320000) (buffer-file-coding-system . utf-8-unix))
+  '((mark-ring (192))))
+
+(desktop-create-buffer 208
+  "/data/data/com.termux/files/home/.emacs.d/init.el"
+  "init.el"
+  'emacs-lisp-mode
+  '(eldoc-mode auto-complete-mode context-skk-mode anzu-mode)
+  666
+  '(643 nil)
+  nil
+  nil
+  '((buffer-display-time 23989 57602 181135 499000) (buffer-file-coding-system . utf-8-unix))
+  '((mark-ring (620 3730 3709 3709 3723 3722 3713 3709 3701 3701 3709 3701 3713 3723 3645 3714))))
+
+(desktop-create-buffer 208
+  "/data/data/com.termux/files/home/gitroot/emacs-25.1-doc-lispref/original_texis/elisp.texi"
+  "elisp.texi"
+  'texinfo-mode
+  '(context-skk-mode anzu-mode)
+  74486
+  '(74472 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-display-time 23989 50969 349083 907000) (buffer-file-coding-system . undecided-unix) (fill-column . 70))
+  '((mark-ring (74431 74397 1))))
+
