@@ -27,6 +27,9 @@
     :config
     (diredfl-global-mode 1)))
 
+;; ffap
+(global-set-key (kbd "C-x C-f") 'ffap)
+
 ;; auto-complete
 (require 'auto-complete)
 (require 'auto-complete-config)
