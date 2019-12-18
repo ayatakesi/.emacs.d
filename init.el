@@ -15,7 +15,6 @@
 
 ;; global settings
 (delete-selection-mode)
-(global-display-line-numbers-mode)
 
 ;; Show/hide Emacs dired details in style
 ;; http://xenodium.com/showhide-emacs-dired-details-in-style/
@@ -98,13 +97,17 @@
                             'po-find-file-coding-system)
 
 ;;; hilight texinfo keywords
+;;; linum-mode
+;;; hl-line-mode
 (add-hook 'po-mode-hook 
   (quote
    (lambda ()
      (require 'texinfo)
      (font-lock-add-keywords
       'po-mode
-      texinfo-font-lock-keywords))))
+      texinfo-font-lock-keywords)
+     (linum-mode 1)
+     (hl-line-mode +1))))
 
 ;;; toggle IM at edit
 (advice-add #'po-edit-msgstr :after
