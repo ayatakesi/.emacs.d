@@ -3,13 +3,15 @@
 
 (setq url-cookie-storage
  '((".google.com"
-  [url-cookie "NID" "188=lE5F4wQ3jLw0cqK6cEBrHPrM4JuOS6JbaQdLvET8HIgTuJo7xLJG6jI842hesAUl5f9nQ5V2qrVUOAgnSaVYAc7TSK9p3lFV0rXMEN1BL3yL9avR21x4r6eST9C3Zbr5wCTGQE5zoPcRhHvNzvOHGM5PgkPz8pEiSkPwMyUbNR4" "Sun, 22-Mar-2020 09:35:13 GMT" "/" ".google.com" nil])
+  [url-cookie "NID" "191=MsatXNs_nkrdBu6Zc7Abpbxmi7FQ6pxME51I4fIe8eX3ttKE3nTuKAEMo_QVWJyk4uI9si0obYY4aWnL3L894j11pR6ZPRWTy0Af0h66fIP-GeMkAT74EfUPdLaZuLoaqyQIVrHIIHR5L2vCEAio2kQjsXKVIyx4jlxeSFy6z4U" "Sun, 17-May-2020 09:14:42 GMT" "/" ".google.com" nil])
  (".qiita.com"
   [url-cookie "_qiita_login_session" "RU5ncjRycXNLaUh6M3gzRXZKS2wybkcyTkNpRVBJZFd4UjRZYTRIbWU5TGc5NWRncjVDQWtMOWZjdVZyY01Ycm5ZZE1DalBqUVFNVmQwMVRGZTIvOVdKVkVaNEgwYXMzZHVxMTNGTE10U0p4eTNMRkJTV1VwUXp2Vk5jYWpUZTlIVERsdEJTS0g5bmNjZEVHZnhqTzdwUlRSUGFMTW5HRlU0T2pDZ0ZOaXVpVkhMZkZzUy96TERJL3RjY2ptRGh2LS0zWWJZVi9SdWkrY0VQaFVSaTQ1ZXhnPT0%3D--5b1b2c24a2c592b30b787957dfb2b4cc8157c2c6" "Tue, 20 Oct 2020 22:06:52 -0000" "/" ".qiita.com" nil])
  (".github.com"
   [url-cookie "_octo" "GH1.1.1090963519.1569895842" "Fri, 01 Oct 2021 02:10:42 -0000" "/" ".github.com" nil])
+ (".google.co.jp"
+  [url-cookie "NID" "191=E27mX-n_K9nVZi0qua6sELl5qZ4_etUmNkiJdUUfPHXSfG-sCbflsc7hJE6I2XGUPs0pt-CNqtD--BhNSlSFRMeP5vK0OezQpSS5LTZ18kDftraweeKpQdvKKgUS-QBMndAsRc1CtxjRqIlIHKyRxAaG2K4ocsmRvZcH3IIRmgo" "Sun, 17-May-2020 09:15:05 GMT" "/" ".google.co.jp" nil])
  ("github.com"
-  [url-cookie "has_recent_activity" "1" "Thu, 24 Oct 2019 20:01:42 -0000" "/" "github.com" nil])
+  [url-cookie "has_recent_activity" "1" "Sun, 05 Jan 2020 17:06:42 -0000" "/" "github.com" nil])
  ("techopedia.com"
   [url-cookie "ezCMPCCS" "true" "Sat, 03 Oct 2020 02:37:36 GMT" "/" "techopedia.com" nil]))
 )

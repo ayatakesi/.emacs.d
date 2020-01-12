@@ -8,13 +8,36 @@
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
 
+;; CUI
+(xterm-mouse-mode 1)
+(global-set-key [mouse-4] 'scroll-down-line)
+(global-set-key [mouse-5] 'scroll-up-line)
+
 ;; 日本語環境の設定
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8)
 (set-default 'buffer-file-coding-system 'utf-8)
 
-;; delete-selection-mode
+;; global settings
 (delete-selection-mode)
+
+;; mbsync + mu
+;; http://pragmaticemacs.com/emacs/migrating-from-offlineimap-to-mbsync-for-mu4e/
+
+;; path追加
+(add-to-list 'load-path "/data/data/com.termux/files/usr/share/emacs/site-lisp/mu/mu4e")
+(require 'mu4e)
+
+;;location of my maildir
+(setq mu4e-maildir (expand-file-name "~/.mail"))
+
+;;command used to get mail
+(setq mu4e-get-mail-command "mbsync gmail")
+
+;;rename files when moving
+;;NEEDED FOR MBSYNC
+(setq mu4e-change-filenames-when-moving t)
+
 
 ;; Show/hide Emacs dired details in style
 ;; http://xenodium.com/showhide-emacs-dired-details-in-style/
@@ -26,6 +49,9 @@
     :ensure t
     :config
     (diredfl-global-mode 1)))
+
+;; ffap
+(global-set-key (kbd "C-x C-f") 'ffap)
 
 ;; auto-complete
 (require 'auto-complete)
@@ -83,15 +109,18 @@
 
 ;;; gettext
 (setq auto-mode-alist
-      (cons '("\\.po\\'\\|\\.po\\." . po-mode) auto-mode-alist))
+      (cons '("\\.po\\'\\|\\.po\\." . po-mode)
+	    auto-mode-alist))
 (autoload 'po-find-file-coding-system "po-compat")
-(modify-coding-system-alist 'file "\\.po\\'\\|\\.po\\."
-			    'po-find-file-coding-system)
+(modify-coding-system-alist
+ 'file "\\.po\\'\\|\\.po\\."
+ 'po-find-file-coding-system)
 
 (autoload 'po-mode "po-mode" "Major mode for translators to edit PO files" t)
 
-(modify-coding-system-alist 'file "\\.po\\'\\|\\.po\\."
-                            'po-find-file-coding-system)
+(modify-coding-system-alist
+ 'file "\\.po\\'\\|\\.po\\."
+ 'po-find-file-coding-system)
 
 ;;; hilight texinfo keywords
 (add-hook 'po-mode-hook 
@@ -168,27 +197,22 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(Info-default-directory-list
-   (quote
-    ("/data/data/com.termux/files/home/info/" "/data/data/com.termux/files/usr/share/info/")))
- '(browse-url-browser-function (quote eww-browse-url))
+ '(Info-default-directory-list '("/data/data/com.termux/files/usr/share/info/"))
+ '(browse-url-browser-function 'eww-browse-url)
  '(compilation-scroll-output t)
  '(dictionary-server "localhost")
  '(elfeed-feeds
-   (quote
-    ("http://planet.gnu.org/rss20.xml" "http://static.fsf.org/fsforg/rss/blogs.xml" "https://static.fsf.org/fsforg/rss/news.xml" "http://sachachua.com/blog/feed/")))
- '(gnus-select-method (quote (nntp "news.gmane.org")))
+   '("http://planet.gnu.org/rss20.xml" "http://static.fsf.org/fsforg/rss/blogs.xml" "https://static.fsf.org/fsforg/rss/news.xml" "http://sachachua.com/blog/feed/"))
+ '(gnus-select-method '(nntp "news.gmane.org"))
  '(google-translate-default-source-language "en")
  '(google-translate-default-target-language "ja")
  '(makeinfo-options "--fill-column=56")
  '(package-archives
-   (quote
-    (("melpa" . "http://melpa.org/packages/")
+   '(("melpa" . "http://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")
-     ("melpa-stable" . "http://stable.melpa.org/packages/"))))
+     ("melpa-stable" . "http://stable.melpa.org/packages/")))
  '(package-selected-packages
-   (quote
-    (anzu auto-complete diredfl use-package elpa-clone ivy-posframe eldoc-box crux neotree ag elisp-demos helpful ddskk minimap htmlize google-translate pdf-tools pandoc package-utils elfeed link connection magit)))
+   '(zenburn-theme request markdown-mode markdown-mode+ markdown-preview-mode gh-md flymd el2markdown anzu auto-complete diredfl use-package elpa-clone ivy-posframe eldoc-box crux neotree ag elisp-demos helpful ddskk minimap htmlize google-translate pdf-tools pandoc package-utils elfeed link connection magit))
  '(po-default-file-header
    "# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Free Software Foundation, Inc.

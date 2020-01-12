@@ -5,7 +5,7 @@
 ;; Author: Oleksandr Manzyuk <manzyuk@gmail.com>
 ;; Maintainer: Andrey Tykhonov <atykhonov@gmail.com>
 ;; URL: https://github.com/atykhonov/google-translate
-;; Version: 0.11.16
+;; Version: 0.11.18
 ;; Keywords: convenience
 
 ;; Contributors:
@@ -119,17 +119,13 @@ QUERY-PARAMS must be an alist of field-value pairs."
 
 (defun google-translate--http-response-body (url &optional for-test-purposes)
   "Retrieve URL and return the response body as a string."
-  (with-current-buffer (url-retrieve-synchronously url)
-    (set-buffer-multibyte t)
-    (goto-char (point-min))
-    (when (null for-test-purposes)
-      (re-search-forward (format "\n\n"))
-      (delete-region (point-min) (point)))
-    (if (null for-test-purposes)
-        (prog1 
-            (buffer-string)
-          (kill-buffer))
-      (buffer-name))))
+  (let ((google-translate-backend-debug (or for-test-purposes
+                                            google-translate-backend-debug)))
+    (with-temp-buffer
+      (save-excursion
+        (google-translate-backend-retrieve url))
+      (set-buffer-multibyte t)
+      (buffer-string))))
 
 (defun google-translate--insert-nulls (string)
   "Google Translate responses with an almost valid JSON string
@@ -256,16 +252,12 @@ speech."
 does matter when translating misspelled word. So instead of
 translation it is possible to get suggestion."
   (let ((info (aref json 7)))
-    (if (and info (> (length info) 0))
-        (aref info 1)
-      nil)))
-  ;; (let ((info (aref json 7)))
-  ;;   (when info
-  ;;     (aref info 1))))
+    (when info
+      (aref info 1))))
 
 (defun google-translate-version ()
   (interactive)
-  (message "Google Translate (version): %s" "0.11.16"))
+  (message "Google Translate (version): %s" "0.11.18"))
 
 
 (provide 'google-translate-core)

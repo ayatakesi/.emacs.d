@@ -8,6 +8,20 @@
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
 
+;; theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+# or
+(add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'vscode-default-dark t)
+
+
+;; CUI
+(xterm-mouse-mode 1)
+(global-set-key [mouse-4] 'scroll-down-line)
+(global-set-key [mouse-5] 'scroll-up-line)
+
 ;; 日本語環境の設定
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8)
@@ -15,6 +29,27 @@
 
 ;; global settings
 (delete-selection-mode)
+<<<<<<< HEAD
+
+;; mbsync + mu
+;; http://pragmaticemacs.com/emacs/migrating-from-offlineimap-to-mbsync-for-mu4e/
+
+;; path追加
+(add-to-list 'load-path "/data/data/com.termux/files/usr/share/emacs/site-lisp/mu/mu4e")
+(require 'mu4e)
+
+;;location of my maildir
+(setq mu4e-maildir (expand-file-name "~/.mail"))
+
+;;command used to get mail
+(setq mu4e-get-mail-command "mbsync gmail")
+
+;;rename files when moving
+;;NEEDED FOR MBSYNC
+(setq mu4e-change-filenames-when-moving t)
+
+=======
+>>>>>>> f93e69f796c7d734cb9714020a4ea866156ee13b
 
 ;; Show/hide Emacs dired details in style
 ;; http://xenodium.com/showhide-emacs-dired-details-in-style/
@@ -70,7 +105,6 @@
 ;; https://github.com/xuchunyang/elisp-demos/blob/master/README.md
 (advice-add 'helpful-update :after #'elisp-demos-advice-helpful-update)
 
-
 ;; google-translate
 (setq load-path (cons "~/.emacs.d/elpa/google-translate-0.11.16/" load-path))
 (require 'google-translate)
@@ -83,18 +117,8 @@
   ;; TKK='427110.1469889687'
   (list 427110 1469889687))
 
-
 ;;; gettext
-(setq auto-mode-alist
-      (cons '("\\.po\\'\\|\\.po\\." . po-mode) auto-mode-alist))
-(autoload 'po-find-file-coding-system "po-compat")
-(modify-coding-system-alist 'file "\\.po\\'\\|\\.po\\."
-			    'po-find-file-coding-system)
-
-(autoload 'po-mode "po-mode" "Major mode for translators to edit PO files" t)
-
-(modify-coding-system-alist 'file "\\.po\\'\\|\\.po\\."
-                            'po-find-file-coding-system)
+(load "start-po.el")
 
 ;;; hilight texinfo keywords
 ;;; linum-mode
@@ -109,7 +133,7 @@
      (linum-mode 1)
      (hl-line-mode +1))))
 
-;;; toggle IM at edit
+;;; toggle IM on at editing translations
 (advice-add #'po-edit-msgstr :after
 	    #'(lambda ()
 		(toggle-input-method)
@@ -117,13 +141,18 @@
 		 nil
 		 texinfo-font-lock-keywords)))
 
-;;; recenter when po-next-entry
+;;; recenter when po-(next|previous)-entry
 (advice-add #'po-next-entry :after
 	    #'(lambda ()
 		"recenter"
 		(recenter nil)))
 
-;;; my setting
+(advice-add #'po-previous-entry :after
+	    #'(lambda ()
+		"recenter"
+		(recenter nil)))
+
+;; ;;; my setting
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (load "my_lisp.el")
 
@@ -175,25 +204,24 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(Info-default-directory-list (quote ("/data/data/com.termux/files/usr/share/info/")))
- '(browse-url-browser-function (quote eww-browse-url))
+ '(Info-default-directory-list '("/data/data/com.termux/files/usr/share/info/"))
+ '(browse-url-browser-function 'eww-browse-url)
  '(compilation-scroll-output t)
+ '(custom-safe-themes
+   '("f3455b91943e9664af7998cc2c458cfc17e674b6443891f519266e5b3c51799d" default))
  '(dictionary-server "localhost")
  '(elfeed-feeds
-   (quote
-    ("http://planet.gnu.org/rss20.xml" "http://static.fsf.org/fsforg/rss/blogs.xml" "https://static.fsf.org/fsforg/rss/news.xml" "http://sachachua.com/blog/feed/")))
- '(gnus-select-method (quote (nntp "news.gmane.org")))
+   '("http://planet.gnu.org/rss20.xml" "http://static.fsf.org/fsforg/rss/blogs.xml" "https://static.fsf.org/fsforg/rss/news.xml" "http://sachachua.com/blog/feed/"))
+ '(gnus-select-method '(nntp "news.gmane.org"))
  '(google-translate-default-source-language "en")
  '(google-translate-default-target-language "ja")
  '(makeinfo-options "--fill-column=56")
  '(package-archives
-   (quote
-    (("melpa" . "http://melpa.org/packages/")
+   '(("melpa" . "http://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")
-     ("melpa-stable" . "http://stable.melpa.org/packages/"))))
+     ("melpa-stable" . "http://stable.melpa.org/packages/")))
  '(package-selected-packages
-   (quote
-    (markdown-mode markdown-mode+ markdown-preview-mode gh-md flymd el2markdown anzu auto-complete diredfl use-package elpa-clone ivy-posframe eldoc-box crux neotree ag elisp-demos helpful ddskk minimap htmlize google-translate pdf-tools pandoc package-utils elfeed link connection magit)))
+   '(po-mode zenburn-theme request markdown-mode markdown-mode+ markdown-preview-mode gh-md flymd el2markdown anzu auto-complete diredfl use-package elpa-clone ivy-posframe eldoc-box crux neotree ag elisp-demos helpful ddskk minimap htmlize google-translate pdf-tools pandoc package-utils elfeed link connection magit))
  '(po-default-file-header
    "# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Free Software Foundation, Inc.
