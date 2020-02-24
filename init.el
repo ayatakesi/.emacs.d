@@ -10,8 +10,8 @@
 
 ;; theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-;(load-theme 'vscode-default-dark t)
-(load-theme 'zenburn t)
+(load-theme 'vscode-default-dark t)
+;(load-theme 'zenburn t)
 
 ;; CUI
 (xterm-mouse-mode 1)
