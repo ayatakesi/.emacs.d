@@ -10,8 +10,8 @@
 
 ;; theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-;(load-theme 'vscode-default-dark t)
-(load-theme 'zenburn t)
+(load-theme 'vscode-default-dark t)
+;(load-theme 'zenburn t)
 
 ;; CUI
 (xterm-mouse-mode 1)
@@ -125,6 +125,17 @@
      (linum-mode 1)
      (hl-line-mode +1))))
 
+(add-hook 'po-mode-hook
+	  '(lambda ()
+	     (global-set-key
+	      (kbd "C-c C-n")
+	      '(lambda ()
+		 (interactive)
+		 (po-next-entry-with-regexp
+		  (format "%s\\|%s"
+			  po-fuzzy-regexp
+			  po-untranslated-regexp) t)))))
+
 ;;; toggle IM on at editing translations
 (advice-add #'po-edit-msgstr :after
 	    #'(lambda ()
@@ -191,37 +202,33 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(Info-default-directory-list (quote ("/data/data/com.termux/files/usr/share/info/")))
+ '(Info-default-directory-list '("/data/data/com.termux/files/usr/share/info/"))
  '(ansi-color-names-vector
    ["#3F3F3F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
- '(browse-url-browser-function (quote eww-browse-url))
+ '(browse-url-browser-function 'eww-browse-url)
  '(company-quickhelp-color-background "#4F4F4F")
  '(company-quickhelp-color-foreground "#DCDCCC")
  '(compilation-scroll-output t)
  '(custom-safe-themes
-   (quote
-    ("2ebf3d81b7555f8c8cfc42017b00dc47f1fbe80ffce53439c9401da3989fedcd" "90b33f03c0e30ffcc66c8227fb69ec27644f497b68c07fbca5eaa751e3c4caa7" "f3455b91943e9664af7998cc2c458cfc17e674b6443891f519266e5b3c51799d" default)))
+   '("2ebf3d81b7555f8c8cfc42017b00dc47f1fbe80ffce53439c9401da3989fedcd" "90b33f03c0e30ffcc66c8227fb69ec27644f497b68c07fbca5eaa751e3c4caa7" "f3455b91943e9664af7998cc2c458cfc17e674b6443891f519266e5b3c51799d" default))
  '(dictionary-server "localhost")
+ '(echo-keystrokes 0.01)
  '(elfeed-feeds
-   (quote
-    ("http://planet.gnu.org/rss20.xml" "http://static.fsf.org/fsforg/rss/blogs.xml" "https://static.fsf.org/fsforg/rss/news.xml" "http://sachachua.com/blog/feed/")))
+   '("http://planet.gnu.org/rss20.xml" "http://static.fsf.org/fsforg/rss/blogs.xml" "https://static.fsf.org/fsforg/rss/news.xml" "http://sachachua.com/blog/feed/"))
  '(fci-rule-color "#383838")
- '(gnus-select-method (quote (nntp "news.gmane.org")))
+ '(gnus-select-method '(nntp "news.gmane.org"))
  '(google-translate-default-source-language "en")
  '(google-translate-default-target-language "ja")
  '(makeinfo-options "--fill-column=56")
  '(nrepl-message-colors
-   (quote
-    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
+   '("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3"))
  '(package-archives
-   (quote
-    (("melpa" . "http://melpa.org/packages/")
+   '(("melpa" . "http://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")
-     ("melpa-stable" . "http://stable.melpa.org/packages/"))))
+     ("melpa-stable" . "http://stable.melpa.org/packages/")))
  '(package-selected-packages
-   (quote
-    (po-mode zenburn-theme request markdown-mode markdown-mode+ markdown-preview-mode gh-md flymd el2markdown anzu auto-complete diredfl use-package elpa-clone ivy-posframe eldoc-box crux neotree ag elisp-demos helpful ddskk minimap htmlize google-translate pdf-tools pandoc package-utils elfeed link connection magit)))
- '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
+   '(po-mode zenburn-theme request markdown-mode markdown-mode+ markdown-preview-mode gh-md flymd el2markdown anzu auto-complete diredfl use-package elpa-clone ivy-posframe eldoc-box crux neotree ag elisp-demos helpful ddskk minimap htmlize google-translate pdf-tools pandoc package-utils elfeed link connection magit))
+ '(pdf-view-midnight-colors '("#DCDCCC" . "#383838"))
  '(po-default-file-header
    "# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Free Software Foundation, Inc.
@@ -243,8 +250,7 @@ msgstr \"\"
  '(skk-initial-search-jisyo "~/.emacs.d/skk-get-jisyo/SKK-JISYO.L")
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
-   (quote
-    ((20 . "#BC8383")
+   '((20 . "#BC8383")
      (40 . "#CC9393")
      (60 . "#DFAF8F")
      (80 . "#D0BF8F")
@@ -261,7 +267,7 @@ msgstr \"\"
      (300 . "#7CB8BB")
      (320 . "#8CD0D3")
      (340 . "#94BFF3")
-     (360 . "#DC8CC3"))))
+     (360 . "#DC8CC3")))
  '(vc-annotate-very-old-color "#DC8CC3"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
