@@ -1,6 +1,21 @@
 (require 'po-mode)
 (require 'ediff)
 
+(defun My_clear_fuzzy_state ()
+  (interactive)
+  (while t
+    (po-next-entry-with-regexp po-fuzzy-regexp nil)
+
+    (po-find-span-of-entry)
+    (setq current_msgid (po-get-msgid))
+
+    (po-find-span-of-entry)    
+    (setq previous_msgid (my-po-get-previous-msgid 0))
+
+    (if (string= current_msgid previous_msgid)
+	(po-unfuzzy))))
+
+
 (defun my_ediff_previous_current_msgid ()
     (interactive)
     
@@ -13,28 +28,31 @@
     (setq previous_msgid (my-po-get-previous-msgid 0))
 
     ;;
-    (if (get-buffer "my_prev")
-	(kill-buffer "my_prev"))
-    (setq prev (get-buffer-create
-		(generate-new-buffer-name "my_prev")))
-    (set-buffer prev)
-    (insert previous_msgid)
+    (if (string= current_msgid previous_msgid)
+	(message "string=")
+      (progn
+	(if (get-buffer "my_prev")
+	    (kill-buffer "my_prev"))
+	(setq prev (get-buffer-create
+		    (generate-new-buffer-name "my_prev")))
+	(set-buffer prev)
+	(insert previous_msgid)
 
-    ;;
-    (if (get-buffer "my_curr")
-	(kill-buffer "my_curr"))
-    (setq curr (get-buffer-create
-		(generate-new-buffer-name "my_curr")))
-    (set-buffer curr)
-    (insert current_msgid)
-    
-    ;;
-    (split-window)
-    (switch-to-buffer prev)
-    (select-window (next-window))
-    (switch-to-buffer curr)    
-    (my-ediff-buffers-wordwise prev curr)
-    )
+	;;
+	(if (get-buffer "my_curr")
+	    (kill-buffer "my_curr"))
+	(setq curr (get-buffer-create
+		    (generate-new-buffer-name "my_curr")))
+	(set-buffer curr)
+	(insert current_msgid)
+	
+	;;
+	(split-window)
+	(switch-to-buffer prev)
+	(select-window (next-window))
+	(switch-to-buffer curr)    
+	(my-ediff-buffers-wordwise prev curr)))
+      )
 
 (defun my-po-get-previous-msgid (kill-flag)
   (let ((buffer (current-buffer))

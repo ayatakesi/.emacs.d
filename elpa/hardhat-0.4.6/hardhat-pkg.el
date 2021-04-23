@@ -1,0 +1,2 @@
+;;; Generated package description from /data/data/com.termux/files/home/.emacs.d/elpa/hardhat-0.4.6/hardhat.el  -*- no-byte-compile: t -*-
+(define-package "hardhat" "0.4.6" "Protect against clobbering user-writable files" '((ignoramus "0.7.0")) :commit "9038a49ab55cd4c502cf7f07ed0d1b9b6bc3626e" :keywords '("convenience") :authors '(("Roland Walker" . "walker@pobox.com")) :maintainer '("Roland Walker" . "walker@pobox.com") :url "http://github.com/rolandwalker/hardhat")
