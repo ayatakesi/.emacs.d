@@ -18,6 +18,8 @@
 (global-set-key [mouse-4] 'scroll-down-line)
 (global-set-key [mouse-5] 'scroll-up-line)
 
+;; BUI
+
 ;; 日本語環境の設定
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8)
@@ -42,6 +44,13 @@
 ;; ;;rename files when moving
 ;; ;;NEEDED FOR MBSYNC
 ;; (setq mu4e-change-filenames-when-moving t)
+
+;;preview files in dired
+(use-package peep-dired
+  :ensure t
+  :defer t ; don't access `dired-mode-map' until `peep-dired' is loaded
+  :bind (:map dired-mode-map
+              ("P" . peep-dired)))
 
 ;; Show/hide Emacs dired details in style
 ;; http://xenodium.com/showhide-emacs-dired-details-in-style/
@@ -139,10 +148,19 @@
 ;;; toggle IM on at editing translations
 (advice-add #'po-edit-msgstr :after
 	    #'(lambda ()
+
 		(toggle-input-method)
 		(font-lock-add-keywords
 		 nil
 		 texinfo-font-lock-keywords)))
+
+;;;
+(advice-add #'po-msgid-to-msgstr :after
+	    #'(lambda ()
+		"fuzzy"
+		(if (eq po-entry-type 'translated)
+		    (po-fade-out-entry) nil)))
+
 
 ;;; recenter when po-(next|previous)-entry
 (advice-add #'po-next-entry :after
@@ -168,6 +186,12 @@
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "C-c C-l") 'redraw-display)
 (global-set-key (kbd "C-c C-z") 'bury-buffer)
+
+; https://twitter.com/purelyagile/status/1332807857625051142?s=19
+(global-set-key [(control ?x) (control ?c)]
+                (lambda ()
+		  (interactive)
+		  (message "Use M-x save-buffers-kill-terminal")))
 
 (let ((my-next-whitespace-minus1 (lambda ()
 				   (interactive)
@@ -227,7 +251,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa-stable" . "http://stable.melpa.org/packages/")))
  '(package-selected-packages
-   '(po-mode zenburn-theme request markdown-mode markdown-mode+ markdown-preview-mode gh-md flymd el2markdown anzu auto-complete diredfl use-package elpa-clone ivy-posframe eldoc-box crux neotree ag elisp-demos helpful ddskk minimap htmlize google-translate pdf-tools pandoc package-utils elfeed link connection magit))
+   '(bui yaml-mode edit-server nov hardhat vterm peep-dired po-mode zenburn-theme request markdown-mode markdown-mode+ markdown-preview-mode gh-md flymd el2markdown anzu auto-complete diredfl use-package elpa-clone ivy-posframe eldoc-box crux neotree ag elisp-demos helpful ddskk minimap htmlize google-translate pdf-tools pandoc package-utils elfeed link connection magit))
  '(pdf-view-midnight-colors '("#DCDCCC" . "#383838"))
  '(po-default-file-header
    "# SOME DESCRIPTIVE TITLE.
